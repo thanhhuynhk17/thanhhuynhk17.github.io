@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="146" viewBox="0 0 220 146">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 60px;
+        fill: #fefefe;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: K2D;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-size: 18px;
+        fill: #26262d;
+      }
+
+      .cls-4 {
+        stroke: #3d3d48;
+        stroke-width: 1px;
+        fill-rule: evenodd;
+        opacity: 0.3;
+      }
+    </style>
+  </defs>
+  <text id="CV" class="cls-1" x="68.155" y="94.204">CV</text>
+  <circle class="cls-2" cx="167.5" cy="49.5" r="13.5"/>
+  <text id="R" class="cls-3" x="161.619" y="55.701">R</text>
+  <path class="cls-4" d="M0.005,145.886l0-.889,220,0.117L220,146Z"/>
+</svg>
