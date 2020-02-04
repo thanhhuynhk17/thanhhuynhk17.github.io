@@ -53,6 +53,11 @@ app.events = function(){
                     </li>`;
                 });
                 $("#list-track").html(listItem);
+            })
+            .catch( err => {
+                window.alert("Oops!!! Something wrong, please re-login spotify to get rid of this problem.");
+                console.log("error:");
+                console.log(err);
             });
     });
 };
