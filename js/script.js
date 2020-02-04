@@ -67,7 +67,7 @@ app.events = function(){
 
             })
             .fail( err => {
-                window.alert("Oops!!! Something went wrong. Make sure you fill in the form. If it's not working, please re-login Spotify.");
+                window.alert("Oops!!! Something went wrong. Make sure you fill in the title field. If it's not working, please re-login Spotify.");
                 console.log("error:");
                 console.log(err);
             });
