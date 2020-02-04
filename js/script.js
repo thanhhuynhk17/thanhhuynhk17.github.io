@@ -11,7 +11,11 @@ getHashParams = function() {
     }
     return hashParams;
 };
-
+let x = getHashParams();
+if (!x.access_token){
+    let text = "Trước tiên hãy đăng nhập Spotify";
+    $("#intro-text").html(text);
+}
 const app = {};
 
 app.apiUrl = "https://api.spotify.com/v1";
@@ -21,11 +25,7 @@ app.tracks;
 
 const playlistName = "tracks_from_songcloud";
 
-let x = getHashParams();
-if (!x.access_token){
-    let text = "Trước tiên hãy đăng nhập Spotify";
-    $("#intro-text").html(text);
-}
+
 // Get the user's input
 app.events = function(){
     $('form').submit('submit',function(e){
