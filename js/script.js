@@ -13,7 +13,8 @@ getHashParams = function() {
 };
 let x = getHashParams();
 if (!x.access_token){
-    let text = `Trước tiên hãy đăng nhập <span style="color: #1db954">Spotify <i class="fa fa-spotify"></i></span>`;
+    let spotifyIcon = '<i class="fa fa-spotify"></i>';
+    let text = `Trước tiên hãy đăng nhập <span style="color: #1db954">Spotify ${spotifyIcon}</span>`;
     $("#intro-text").html(text);
 }
 const app = {};
