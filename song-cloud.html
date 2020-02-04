@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 <!-- Mirrored from athemeart.com/html-demo/cvr/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Jan 2020 07:11:41 GMT -->
 <head>
 		<meta charset="UTF-8">
@@ -15,7 +15,7 @@
 		<meta name="msapplication-navbutton-color" content="#3b2e4d">
 		<!-- iOS Safari -->
 		<meta name="apple-mobile-web-app-status-bar-style" content="#3b2e4d">
-		<title>ThanhHuynhK17</title>
+		<title>SongCloud</title>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
 		<!-- Main style sheet -->
@@ -25,12 +25,15 @@
 		<!-- responsive style sheet -->
 		<link rel="stylesheet" type="text/css" href="css/responsive.css">
 
+    
+
 		<!-- Fix Internet Explorer ______________________________________-->
 		<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="vendor/html5shiv.js"></script>
 			<script src="vendor/respond.js"></script>
-		<![endif]-->	
+		<![endif]-->
+
 	</head>
 
 	<body>
@@ -46,46 +49,50 @@
 			</div>
 
 
-
-			<!-- Aside Navigation Menu -->
-			<div id="aside-nav-wrapper">
-				<nav id='theme-menu-list'>
-					<ul class="navbar-nav ml-auto">
-			        	<li class="nav-item"><a class="nav-link" href="index.html"><i class="icon flaticon-house-outline"></i> Home</a></li>
-			        </ul>
-				</nav>
-			</div> <!-- /.aside-nav-wrapper -->
+            <div class="playlist">
+            </div>
 
 
 			<!-- ============================ Main Page ========================== -->
-			<div id="main-page">
+			<div id="main-page" style="margin-left: 0" >
 				<!-- Home -->
 				<section id="home" class="bg-hero" style="background-image: url(images/home/bg.jpg);">
-                    <div class="partical-bg">
-                        <div id="particles"></div>
-                    </div>
-                    
-					<div class="main-wrapper">
-                        <h1 style="margin: 0">Launching soon!!!</h1>
+
+					<div class="main-wrapper" >
+
+                        <!-- <h1 style="margin: 0">Launching soon!!!</h1> -->
 			        </div> <!-- /.main-wrapper -->
+                    <div style="text-align: left;" class="search-form form-group">
+						<a style="margin-bottom: 4px;" href="http://localhost:8888/login" class="btn btn-primary">OAuth</a>
+						<br>
+                        <form style="display: flex" action="">
+                            <input id="title" style="width: 30vh" type="search" class="form-control" placeholder="Song's title" value="crazy in love">
+                            <input style="width: 10vh" type="submit" class="form-control btn btn-light" value="Search">
+						</form>
+						<div class="search-result ">
+							<ul id="list-track" class="list-group scrollbar scrollbar-primary">
+							</ul>
+
+
+
+						</div>
+					</div>
+
+
 				</section> <!-- /#home -->
 				<!-- End Home -->
-
-
-
 			</div> <!-- #main-page -->
 
-
-			
-			
-			
 
 
 		<!-- Optional JavaScript _____________________________  -->
 
     	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    	<!-- jQuery -->
+		<!-- jQuery -->
 		<script src="vendor/jquery.2.2.3.min.js"></script>
+
+		<!-- song-cloud js -->
+		<script src="js/script.js"></script>
 		<!-- Popper js -->
 		<script src="vendor/popper.js/popper.min.js"></script>
 		<!-- Bootstrap JS -->
@@ -113,6 +120,9 @@
 		<!-- Theme js -->
 		<script src="js/theme.js"></script>
 		</div> <!-- /.main-page-wrapper -->
+
+
+		
 	</body>
 
 <!-- Mirrored from athemeart.com/html-demo/cvr/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Jan 2020 07:11:41 GMT -->
