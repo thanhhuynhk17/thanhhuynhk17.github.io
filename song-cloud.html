@@ -59,23 +59,24 @@
 				<section id="home" class="bg-hero" style="background-image: url(images/home/bg.jpg);">
 
 					<div class="main-wrapper" >
-
-                        <!-- <h1 style="margin: 0">Launching soon!!!</h1> -->
+						<!-- <div class="song-cloud"></div> -->
 			        </div> <!-- /.main-wrapper -->
 					<div style="text-align: left;" class="search-form form-group">
 						<h6 id="intro-text" style="color: white; width: 80vw;">Tìm kiếm bài hát ưa thích của bạn bên dưới</h6>
-						<!-- https://spotify-auth-songcloud.herokuapp.com/login -->
-						<!-- http://localhost:8888/login -->
-						<a id="login-spotify" style="margin: 4px 0;" href="https://spotify-auth-songcloud.herokuapp.com/login" class="btn btn-primary">Login Spotify</a>
+						<!-- 
+						https://spotify-auth-songcloud.herokuapp.com/login
+						http://localhost:8888/login
+						-->
+
+						<a id="login-spotify" style="margin: 4px 0;background-color: #1db954; border-color: #1db954;" href="https://spotify-auth-songcloud.herokuapp.com/login" class="btn btn-success">Login Spotify</a>
 						<br>
                         <form style="display: flex" action="">
                             <input id="title" style="width: 30vh" type="search" class="form-control" placeholder="Song's title" value="">
-                            <input style="width: 10vh" type="submit" class="form-control btn btn-light" value="Search">
+                            <input style="width: 15vh" type="submit" class="form-control btn btn-light" value="Search">
 						</form>
 						<div class="search-result ">
 							<ul id="list-track" class="list-group scrollbar scrollbar-primary">
 							</ul>
-
 
 
 						</div>
@@ -93,7 +94,7 @@
     	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<!-- jQuery -->
 		<script src="vendor/jquery.2.2.3.min.js"></script>
-		<!-- song-cloud js -->
+		<!-- spotify api js -->
 		<script src="js/script.js"></script>
 		<!-- Popper js -->
 		<script src="vendor/popper.js/popper.min.js"></script>

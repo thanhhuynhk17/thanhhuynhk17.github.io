@@ -1153,7 +1153,7 @@ body .button--wayra:hover::before {
   position: absolute;
   color: #495057;
   margin-top: 20px;
-  width: 40vh;
+  width: 45vh;
 }
 
 .track-container{
@@ -1180,8 +1180,8 @@ body .button--wayra:hover::before {
 }
 
 .album-cover{
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background-size: cover;
   background-position: center;
   margin-right: 8px;
@@ -1190,6 +1190,15 @@ body .button--wayra:hover::before {
 .album-cover .overlay{
   height: 100%;
   background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.song-cloud{
+  width: 800px;
+  margin: auto;
+  height: 500px;
+  background-color: red;
+  background-size: cover;
+  background-position: center ;
 }
 
 

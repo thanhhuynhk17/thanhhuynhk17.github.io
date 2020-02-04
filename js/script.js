@@ -13,7 +13,7 @@ getHashParams = function() {
 };
 let x = getHashParams();
 if (!x.access_token){
-    let text = "Trước tiên hãy đăng nhập Spotify";
+    let text = `Trước tiên hãy đăng nhập <span style="color: #1db954">Spotify <i class="fa fa-spotify"></i></span>`;
     $("#intro-text").html(text);
 }
 const app = {};
@@ -41,33 +41,37 @@ app.events = function(){
         app.searchPlaylistID(playlistName);*/
         $.when(app.searchTracks(title))
             .then(() => {
-                let listItem = "";
-                app.tracks.map( track => {
-                    listItem += `
-                    <li class="list-group-item list-group-item-dark">
-                        <div class="track-container">
-                            <div class="album-cover" style="background-image: url(${track.album.images[0].url}) ">
-                                <div class="overlay"></div>
+                if(!app.tracks.length){
+                    let text = `<li class="list-group-item list-group-item-danger">Song not found</li>`;
+                    $("#list-track").html(text);
+                }else{
+                    let listItem = "";
+                    app.tracks.map( track => {
+                        listItem += `
+                        <li class="list-group-item list-group-item-dark">
+                            <div class="track-container">
+                                <div class="album-cover" style="background-image: url(${track.album.images[0].url}) ">
+                                    <div class="overlay"></div>
+                                </div>
+                                <div class="info">
+                                    <div class="song-title">${track.name}</div>
+                                    <div class="singer">${track.artists[0].name}</div>
+                                </div>
+                                <a href="#" id="${track.id}" class="add-track"><i class="fa fa-plus-circle"></i></a>
                             </div>
-                            <div class="info">
-                                <div class="song-title">${track.name}</div>
-                                <div class="singer">${track.artists[0].name}</div>
-                            </div>
-                            <a href="#" id="${track.id}" class="add-track"><i class="fa fa-plus-circle"></i></a>
-                        </div>
-                    </li>`;
-                });
-                $("#list-track").html(listItem);
+                        </li>`;
+                    });
+                    $("#list-track").html(listItem);
+                }
+
             })
-            .catch( err => {
-                window.alert("Oops!!! Something wrong, please re-login spotify to get rid of this problem.");
+            .fail( err => {
+                window.alert("Oops!!! Something went wrong. Make sure you fill in the form. If it's not working, please re-login Spotify.");
                 console.log("error:");
                 console.log(err);
             });
     });
 };
-
-
 
 //
 app.searchTracks = (tracksTitle) => $.ajax({
@@ -89,23 +93,6 @@ app.searchTracks = (tracksTitle) => $.ajax({
     }
 });
 
-app.searchPlaylistID = (playlistName) => $.ajax({
-    url: `${app.apiUrl}/search`,
-    method: 'GET',
-    headers:{
-        'Authorization': 'Bearer ' + app.token
-    },
-    dataType: 'json',
-    data: {
-        q: playlistName,
-        type: 'playlist'
-    },
-    success: function(data){
-        app.playlistID = data.playlists.items[0];
-        console.log("ajax playlistID");
-        console.log(app.playlistID);
-    }
-});
 
 // App
 app.init = function(){
