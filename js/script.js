@@ -11,10 +11,13 @@ getHashParams = function() {
     }
     return hashParams;
 };
+
+let spotifyColor= '#1db954';
 let x = getHashParams();
+// Check if user didn't login Spotify
 if (!x.access_token){
     let spotifyIcon = '<i class="fa fa-spotify"></i>';
-    let text = `Trước tiên hãy đăng nhập <span style="color: #1db954">Spotify ${spotifyIcon}</span>`;
+    let text = `Please login <span style="color: ${spotifyColor}">Spotify ${spotifyIcon}</span> first`;
     $("#intro-text").html(text);
 }
 const app = {};
@@ -25,7 +28,6 @@ app.playlistID;
 app.tracks;
 
 const playlistName = "tracks_from_songcloud";
-
 
 // Get the user's input
 app.events = function(){
@@ -58,7 +60,7 @@ app.events = function(){
                                     <div class="song-title">${track.name}</div>
                                     <div class="singer">${track.artists[0].name}</div>
                                 </div>
-                                <a href="#" id="${track.id}" class="add-track"><i class="fa fa-plus-circle"></i></a>
+                                <a href="#" id="${track.id}" class="add-track"><i style="color: ${spotifyColor}" class="fa fa-plus-circle"></i></a>
                             </div>
                         </li>`;
                     });
