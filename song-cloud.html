@@ -63,8 +63,10 @@
                         <!-- <h1 style="margin: 0">Launching soon!!!</h1> -->
 			        </div> <!-- /.main-wrapper -->
 					<div style="text-align: left;" class="search-form form-group">
-						<h6 style="color: white; width: 80vw;">Trước tiên hãy đăng nhập Spotify</h6>
-						<a style="margin: 4px 0;" href="https://spotify-auth-songcloud.herokuapp.com/login" class="btn btn-primary">Login Spotify</a>
+						<h6 id="intro-text" style="color: white; width: 80vw;">Tìm kiếm bài hát ưa thích của bạn bên dưới</h6>
+						<!-- https://spotify-auth-songcloud.herokuapp.com/login -->
+						<!-- http://localhost:8888/login -->
+						<a id="login-spotify" style="margin: 4px 0;" href="https://spotify-auth-songcloud.herokuapp.com/login" class="btn btn-primary">Login Spotify</a>
 						<br>
                         <form style="display: flex" action="">
                             <input id="title" style="width: 30vh" type="search" class="form-control" placeholder="Song's title" value="">
@@ -78,7 +80,7 @@
 
 						</div>
 					</div>
-
+					
 
 				</section> <!-- /#home -->
 				<!-- End Home -->
@@ -91,7 +93,6 @@
     	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<!-- jQuery -->
 		<script src="vendor/jquery.2.2.3.min.js"></script>
-
 		<!-- song-cloud js -->
 		<script src="js/script.js"></script>
 		<!-- Popper js -->

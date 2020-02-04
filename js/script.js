@@ -21,6 +21,11 @@ app.tracks;
 
 const playlistName = "tracks_from_songcloud";
 
+let x = getHashParams();
+if (!x.access_token){
+    let text = "Trước tiên hãy đăng nhập Spotify";
+    $("#intro-text").html(text);
+}
 // Get the user's input
 app.events = function(){
     $('form').submit('submit',function(e){
