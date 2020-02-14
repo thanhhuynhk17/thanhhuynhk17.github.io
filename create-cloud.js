@@ -1,6 +1,6 @@
 function createSongCloud() {
     $("#list-track").html("");
-
+    $('#song-cloud').html("");
     var width = 900,
         height = 600;
 
