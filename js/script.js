@@ -34,7 +34,6 @@ const playlistName = "songcloud_playlist";
 app.events = function(){
     $('form').submit('submit',function(e){
         e.preventDefault();
-
         $('#create-spotify-playback').html("");
         let x = getHashParams();
         if (x.access_token !== undefined) {

@@ -76,6 +76,5 @@ function createPlayBack(id){
     if (id === null) {
         iframe = "<p>Sorry this track didn't have preview</p>";
     }
-    console.log(iframe);
     $("#create-spotify-playback").html(iframe);           
 }
