@@ -1,10 +1,3 @@
-// js Document
-
-    // Created on   : 04/04/2019.
-    // Theme Name   : CVR- CV-Resume Template.
-    // Version      : 1.0.
-    // Developed by : Jubayer al hasan. (jubayer.hasan1991@gmail.com)
-
 
 (function($) {
     "use strict";

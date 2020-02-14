@@ -326,9 +326,11 @@ body .button--wayra:hover::before {
   background: rgba(38,38,45,0.7);
 }
 #home.bg-hero {
+  background-image: url(images/home/bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
 }
 #main-page section#home .partical-bg {
   position: absolute;
@@ -1146,6 +1148,7 @@ body .button--wayra:hover::before {
     top: 0;
     margin-left: 10px;
     margin-top: 10px;
+    z-index: 100 !important;
 }
 
 
@@ -1154,6 +1157,7 @@ body .button--wayra:hover::before {
   color: #495057;
   margin-top: 20px;
   width: 45vh;
+  z-index: 1;
 }
 
 .track-container{
@@ -1192,15 +1196,10 @@ body .button--wayra:hover::before {
   background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
 
-.song-cloud{
-  width: 800px;
-  margin: auto;
-  height: 500px;
-  background-color: red;
-  background-size: cover;
-  background-position: center ;
-}
-
+/* .main-wrapper svg{
+  width: 80%;
+  height: 60%;
+} */
 
 /* Scrollbar */
 .scrollbar {
@@ -1227,9 +1226,17 @@ body .button--wayra:hover::before {
 }
 
 
+text:hover{
+  background-color: #837dff;
+}
 
 
 
+.create-spotify-playback{
+  position: relative;
+  z-index: 100;
+  text-align: center;
+}
 
 
 

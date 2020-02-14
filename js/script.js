@@ -20,14 +20,15 @@ if (!x.access_token){
     let text = `Please login <span style="color: ${spotifyColor}">Spotify ${spotifyIcon}</span> first`;
     $("#intro-text").html(text);
 }
+
 const app = {};
 
 app.apiUrl = "https://api.spotify.com/v1";
-app.token = "";
+app.token;
 app.playlistID;
 app.tracks;
 
-const playlistName = "tracks_from_songcloud";
+const playlistName = "songcloud_playlist";
 
 // Get the user's input
 app.events = function(){
@@ -35,21 +36,28 @@ app.events = function(){
         e.preventDefault();
 
         let x = getHashParams();
-        app.token = x.access_token ? x.access_token:"";
-        console.log("getHashParams()");
-        console.log(app.token);
+        if (x.access_token !== undefined) {
+            app.token = x.access_token;
+        }
         // Get query
         let title = $('input[type=search]').val();
 /*            titles.map( (title) => app.searchTracks(title));
         app.searchPlaylistID(playlistName);*/
         $.when(app.searchTracks(title))
-            .then(() => {
+            .then((data) => {
+                app.tracks = data.tracks.items;
+                // hiding song cloud
+                $("#song-cloud").css('display', 'none');
+
+                // If not found
                 if(!app.tracks.length){
                     let text = `<li class="list-group-item list-group-item-danger">Song not found</li>`;
                     $("#list-track").html(text);
                 }else{
                     let listItem = "";
-                    app.tracks.map( track => {
+                    app.tracks.map( (track, index) => {
+                        let addTrackLink = `https://spotify-auth-songcloud.herokuapp.com/addTrack?id=${track.id}&name=${track.name}&preview_url=${track.preview_url}&external_url=${track.external_urls.spotify}&uri=${track.uri}`;
+
                         listItem += `
                         <li class="list-group-item list-group-item-dark">
                             <div class="track-container">
@@ -60,7 +68,7 @@ app.events = function(){
                                     <div class="song-title">${track.name}</div>
                                     <div class="singer">${track.artists[0].name}</div>
                                 </div>
-                                <a href="#" id="${track.id}" class="add-track"><i style="color: ${spotifyColor}" class="fa fa-plus-circle"></i></a>
+                                <a href="#" id="${track.id}" onclick="postData(this)" class="${addTrackLink}" ><i style="color: ${spotifyColor}; font-size: 30px" class="fa fa-plus-circle"></i></a>
                             </div>
                         </li>`;
                     });
@@ -69,7 +77,7 @@ app.events = function(){
 
             })
             .fail( err => {
-                window.alert("Oops!!! Something went wrong. Make sure the title field is filled in. If it's not working, please re-login Spotify.");
+                $("#list-track").html(`<li class="list-group-item list-group-item-danger">Oops!!! Something went wrong. Make sure the title field is filled in. If it's not working, please re-login Spotify.</li>`);
                 console.log("error:");
                 console.log(err);
             });
@@ -87,21 +95,27 @@ app.searchTracks = (tracksTitle) => $.ajax({
     data: {
         q: tracksTitle,
         type: 'track'
-    },
-    success: function(data){
-        app.tracks = data.tracks.items;
-        // app.tracks = app.tracks.map( (track) => track.uri ).join(",");
-        console.log("ajax tracks");
-        console.log(app.tracks);
     }
+    // success: function(data){
+    //     app.tracks = data.tracks.items;
+    //     // app.tracks = app.tracks.map( (track) => track.uri ).join(",");
+    // }
 });
 
 
+// get user's id
+app.getUserID = () => $.ajax({
+    url: `${app.apiUrl}/me`,
+    method: 'GET',
+    headers:{
+        'Authorization': 'Bearer ' + app.token
+    },
+    dataType: 'json'
+});
+
 // App
-app.init = function(){
-    app.events();
-};
-$(app.init);
+
+$(app.events);
 
 
 

@@ -48,42 +48,40 @@
 				</div>
 			</div>
 
-
-            <div class="playlist">
-            </div>
-
-
 			<!-- ============================ Main Page ========================== -->
 			<div id="main-page" style="margin-left: 0" >
 				<!-- Home -->
-				<section id="home" class="bg-hero" style="background-image: url(images/home/bg.jpg);">
+				<section id="home" class="bg-hero" style="background-image: url(images/home/bg3.png); ">
+					<!-- <div class="partical-bg">
+                        <div id="particles"></div>
+					</div> -->
+					<div class="main-wrapper" id="song-cloud">
+					</div>
+					<div id="create-spotify-playback" class="create-spotify-playback">
+					</div>
 
-					<div class="main-wrapper" >
-						<!-- <div class="song-cloud"></div> -->
-			        </div> <!-- /.main-wrapper -->
+					 <!-- /.main-wrapper -->
 					<div style="text-align: left;" class="search-form form-group">
 						<h6 id="intro-text" style="color: white; width: 80vw;">Now let me know your favor songs</h6>
 						<!-- 
 						https://spotify-auth-songcloud.herokuapp.com/login
 						http://localhost:8888/login
 						-->
-
 						<a id="login-spotify" style="margin: 4px 0" href="https://spotify-auth-songcloud.herokuapp.com/login" class="btn btn-success">Login Spotify</a>
 						<br>
                         <form style="display: flex" action="">
                             <input id="title" style="width: 30vh" type="search" class="form-control" placeholder="Song title" value="">
                             <input style="width: 15vh" type="submit" class="form-control btn btn-light" value="Search">
 						</form>
-						<div class="search-result ">
+						<div class="search-result " >
 							<ul id="list-track" class="list-group scrollbar scrollbar-primary">
 							</ul>
-
-
 						</div>
 					</div>
 					
 
 				</section> <!-- /#home -->
+
 				<!-- End Home -->
 			</div> <!-- #main-page -->
 
@@ -96,6 +94,27 @@
 		<script src="vendor/jquery.2.2.3.min.js"></script>
 		<!-- spotify api js -->
 		<script src="js/script.js"></script>
+
+		<!-- word cloud js -->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="d3.layout.cloud.js"></script>
+		<script src="create-cloud.js"></script>
+		<!-- Send post method without form script -->
+		<script>
+			createSongCloud();
+			// Send post method without form
+			postData = function(item){
+				let updateDataURL = $(`#${item.id}`).attr('class');
+				$.post(updateDataURL);
+				let text = `<li class="list-group-item list-group-item-success">Thanks for sharing, song cloud will be initializing...</li>`;
+				$("#list-track").html(text);
+
+				setTimeout(()=>{
+					location.reload();
+				}, 2000);
+			};
+			//
+		</script>
 		<!-- Popper js -->
 		<script src="vendor/popper.js/popper.min.js"></script>
 		<!-- Bootstrap JS -->
