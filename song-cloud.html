@@ -96,23 +96,26 @@
 		<script src="js/script.js"></script>
 
 		<!-- word cloud js -->
-		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
 		<script src="d3.layout.cloud.js"></script>
 		<script src="create-cloud.js"></script>
 		<!-- Send post method without form script -->
 		<script>
-			createSongCloud();
-			// Send post method without form
-			postData = function(item){
-				let updateDataURL = $(`#${item.id}`).attr('class');
-				$.post(updateDataURL);
-				let text = `<li class="list-group-item list-group-item-success">Thanks for sharing, song cloud will be initializing...</li>`;
-				$("#list-track").html(text);
+			$(document).ready( function (){
+				createSongCloud();
+				// Send post method without form
+				postData = function(item){
+					let updateDataURL = $(`#${item.id}`).attr('class');
+					$.post(updateDataURL);
+					let text = `<li class="list-group-item list-group-item-success">Thanks for sharing, song cloud will be initializing...</li>`;
+					$("#list-track").html(text);
 
-				setTimeout(()=>{
-					location.reload();
-				}, 2000);
-			};
+					setTimeout(()=>{
+						location.reload();
+					}, 2000);
+				};
+			});
+
 			//
 		</script>
 		<!-- Popper js -->
