@@ -15,7 +15,7 @@
 		<meta name="msapplication-navbutton-color" content="#3b2e4d">
 		<!-- iOS Safari -->
 		<meta name="apple-mobile-web-app-status-bar-style" content="#3b2e4d">
-		<title>SongCloud</title>
+		<title>Song Cloud</title>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
 		<!-- Main style sheet -->
@@ -78,7 +78,7 @@
 							</ul>
 						</div>
 					</div>
-					
+
 
 				</section> <!-- /#home -->
 
@@ -102,6 +102,7 @@
 		<!-- Send post method without form script -->
 		<script>
 			$(document).ready( function (){
+
 				createSongCloud();
 				// Send post method without form
 				postData = function(item){
@@ -111,7 +112,8 @@
 					$("#list-track").html(text);
 
 					setTimeout(()=>{
-						location.reload();
+						$("#list-track").html("");
+						createSongCloud();
 					}, 2000);
 				};
 			});

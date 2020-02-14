@@ -2,6 +2,7 @@
  * Obtains parameters from the hash of the URL
  * @return Object
  */
+
 getHashParams = function() {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -13,20 +14,26 @@ getHashParams = function() {
 };
 
 let spotifyColor= '#1db954';
-let x = getHashParams();
-// Check if user didn't login Spotify
-if (!x.access_token){
-    let spotifyIcon = '<i class="fa fa-spotify"></i>';
-    let text = `Please login <span style="color: ${spotifyColor}">Spotify ${spotifyIcon}</span> first`;
-    $("#intro-text").html(text);
-}
+loginChecker = function(){
+    loginChecker = function(){};
+    let x = getHashParams();
+    // Check if user didn't login Spotify
+    if (!x.access_token){
+        let spotifyIcon = '<i class="fa fa-spotify"></i>';
+        let text = `Please login <span style="color: ${spotifyColor}">Spotify ${spotifyIcon}</span> first`;
+        $("#intro-text").html(text);
+    }
+
+};
+loginChecker();
+
 
 const app = {};
 
 app.apiUrl = "https://api.spotify.com/v1";
-app.token;
 app.playlistID;
 app.tracks;
+app.token;
 
 const playlistName = "songcloud_playlist";
 
@@ -34,11 +41,16 @@ const playlistName = "songcloud_playlist";
 app.events = function(){
     $('form').submit('submit',function(e){
         e.preventDefault();
+        
         $('#create-spotify-playback').html("");
-        let x = getHashParams();
-        if (x.access_token !== undefined) {
+        
+        console.log(app.token);
+        if (!app.token) {
+            let x = getHashParams();
             app.token = x.access_token;
         }
+        console.log(app.token);
+
         // Get query
         let title = $('input[type=search]').val();
 /*            titles.map( (title) => app.searchTracks(title));
@@ -56,6 +68,9 @@ app.events = function(){
                 }else{
                     let listItem = "";
                     app.tracks.map( (track, index) => {
+                        // http://localhost:8888/
+                        // https://spotify-auth-songcloud.herokuapp.com/
+
                         let addTrackLink = `https://spotify-auth-songcloud.herokuapp.com/addTrack?id=${track.id}&name=${track.name}&preview_url=${track.preview_url}&external_url=${track.external_urls.spotify}&uri=${track.uri}`;
 
                         listItem += `

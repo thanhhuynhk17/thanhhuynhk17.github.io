@@ -1,12 +1,13 @@
 function createSongCloud() {
     $("#list-track").html("");
-    $('#song-cloud').html("");
     var width = 900,
         height = 600;
 
     var fill = d3.scale.category20();
 
     //get db
+    // http://localhost:8888/
+    // https://spotify-auth-songcloud.herokuapp.com/
     d3.json('https://spotify-auth-songcloud.herokuapp.com/tracks', (error, data) =>{
         if (error) {
             console.log(error);
@@ -41,7 +42,6 @@ function createSongCloud() {
     });
 
     function drawCloud(words) {
-        let index = 0;
         d3.select("#song-cloud").append("svg")
             .attr("width", width)
             .attr("height", height)
@@ -62,10 +62,7 @@ function createSongCloud() {
             .attr("transform", function(d) {
                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
-            .text(function(d) { 
-                console.log(index);
-                index++;
-                return d.text; });
+            .text(function(d) { return d.text; });
     }
 
 
